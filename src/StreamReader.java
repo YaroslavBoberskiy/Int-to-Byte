@@ -5,10 +5,10 @@ import java.io.ByteArrayInputStream;
  */
 public class StreamReader {
 
-    public void printStreamData (byte [] inStream) {
-        ByteArrayInputStream bais = new ByteArrayInputStream(inStream);
-        for (int i = 0; i < inStream.length; i ++) {
-            System.out.println(bais.read());
+    public void printStreamData (ByteArrayInputStream bais) {
+        int i;
+        while ((i=bais.read()) != -1) {
+            System.out.println(i);
         }
         }
     }
