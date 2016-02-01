@@ -1,16 +1,26 @@
-import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-/**
- *
- *
- *
- * Created by YB on 27.01.2016.
- */
 public class Demo {
     public static void main(String[] args) {
-        byte [] barr = {127, -64, 127, 0, -11, 45, 78};
-        StreamReader ibc = new StreamReader();
-        ByteArrayInputStream bais = new ByteArrayInputStream(barr);
-        ibc.printStreamData(bais);
+
+        StreamReader sr = new StreamReader();
+        String pathToFile = "C:" + File.separator + "temp1" + File.separator + "temp2" + File.separator + "javainfo.txt";
+        File javaInfo = new File(pathToFile);
+
+        if (javaInfo.exists() && javaInfo.isFile()) {
+            try {
+                FileInputStream fis = new FileInputStream(javaInfo);
+                    sr.printStreamData(fis);
+                    fis.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 }
